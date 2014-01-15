@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Create Admin</title>
+
+  </head>
+  <body>
+
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src='/js/create_admin.js'></script>
+
+    <div class='container'>
+        <div class='span4 offset4'>
+            <form class='add'>
+              <fieldset>
+                <legend>Create Admin Account</legend>
+
+                <label>
+                    <input id='name' type="text" maxlength='10' placeholder="First Name">
+                </label>
+
+                <label>
+                    <input id='user' type="text" maxlength='10' placeholder="Username">
+                </label>
+
+                <label>
+                    <input id='pass' type="password" maxlength='10' placeholder="Password">
+                </label>
+
+                <br />
+                <div align='left'>
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>

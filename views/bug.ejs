@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Metal Mod</title>
+
+    </head>
+    <body>
+
+        <%- partial('navbar', {tab: 'report a bug', admin: locals.admin}) %>
+
+        <div class='container'>  
+            <div class='row'>   
+            <div class='span10 offset1'>   
+                <form class='bugs'>
+                    <fieldset>
+                        <legend>Report A Bug</legend>
+
+                            <h3>Controller Block Mod</h3>
+
+                            <hr>
+                            <br />
+                            <br />
+                            <input type="text" placeholder="Your Name">
+                            <br />
+                            <input type="text" placeholder='your.email@example.com'>
+                            <input type='hidden' id='date'>
+                            <br />
+                            <br />
+
+                        <div align='center'>
+
+                            <textarea class='span10' placeholder='Description of the bug, including detailed instructions on how to replicate it. Please use good grammar and spelling, because a bug report is pointless if nobody can read it!' rows='10'></textarea>
+                        
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            </div>
+        </div>
+
+    </body>
+</html>

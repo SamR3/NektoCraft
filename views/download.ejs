@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Downloads</title>
+  
+  </head>
+  <body>
+
+  	<%- partial('navbar', {tab: 'downloads', admin: locals.admin}) %>
+
+    <script src='/js/downloads.js'></script>
+
+    <div class='container'>
+      <div class='row'>
+        <div class='span10 offset1'>
+          <div class='well controller'>
+            <h3>Controller Block Mod &nbsp <small> downloaded <%= locals.numDownloads %> times!</small></h3>
+            <table class='table table-bordered table-bolded'>
+              <% if(downloads != null) { %>
+                <% for(var i = downloads.length; i > (downloads.length - 10); i--){ %>
+                  <% if(downloads[i] != null) { %>
+                    <% if(admin.admin && downloads[i].release == 'Alpha'){ %>
+                      <tr class='alpha'>
+                    <% } else if(!admin.admin && downloads[i].release == 'Alpha') { %>
+                      <% i++ %>
+                    <% } else if(downloads[i].release == 'Full') { %>
+                      <tr class='full'>
+                    <% } else { %>
+                      <tr>
+                    <% } %> 
+                      <td>Version - <%= downloads[i].version %> </td>
+                      <td><a href=<%= downloads[i].link %> target='_blank' class='dl'><%= downloads[i].link %></a></td>
+                      <td><%= downloads[i].info %></td>
+                      <td><%= downloads[i].minecraftVersion %></td>
+                    </tr>
+                  <% } %>
+                <% } %>
+              <% } else { %>
+                  <tr>
+                    <td>No releases right now! Please check back soon, because I can only procrastinate for so long.</td>
+                  </tr>
+              <% } %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

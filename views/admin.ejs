@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Admin Page</title>
+
+  </head>
+  <body>
+  
+    <%- partial('navbar', {tab: 'admin', admin: locals.admin}) %>
+    
+    <script src='/js/create_release.js'></script>
+    <script src='/js/delete_release.js'></script>
+
+    <div class='container'>
+      <div class='row'>
+        <div id='alert' class='span6'>
+          
+        </div>
+      </div>
+      <div class='row'>
+        <% if(admin.super == true) { %>
+          <div class='span6'>
+              <form class='add'>
+                <fieldset>
+                  <legend>Add A Release</legend>
+                    <label>Mod: </label>
+                    <% if(!admin.super) { %> 
+                      <select id='mod'>
+                        <option value='0' disabled>Odyssey Mod</option>
+                        <option value='-1' disabled>Metal Mod</option>
+                        <option value='1'>Controller Block Mod</option>
+                      </select>
+                    <% } else if(admin.super) { %>
+                      <select id='mod'>
+                        <option value='0'>Odyssey Mod</option>
+                        <option value='-1'>Metal Mod</option>
+                        <option value='1'>Controller Block Mod</option>
+                      </select>
+                    <% } %>
+
+                    <label>
+                        <input id='ver' type="text" maxlength='6' placeholder="Mod Version: ">
+                    </label>
+
+                    <label>
+                        <input id='info' type="text" maxlength='40' placeholder="Release Info: ">
+                    </label>
+
+                    <label>
+                        <input id='mineVer' type="text" maxlength='6' placeholder="Minecraft Version: ">
+                    </label>
+
+                    <label>
+                        <input id='link' type="text" placeholder="Adfly Link: ">
+                    </label>
+
+                    <label>Release Level: </label>
+                    <select id='release'>
+                      <option>Alpha</option>
+                      <option>Beta</option>
+                      <option>Full</option>
+                    </select>
+
+                    <br />
+                    <div align='left'>
+                        <button type="submit" class="btn">Submit</button>
+                    </div>
+                </fieldset>
+              </form>
+
+          </div>
+          <div class='span6'>
+            <fieldset>
+              <legend>Remove A Release</legend>
+              <table class='table table-bordered table-bolded'>
+                <% if(downloads != null) { %>
+                  <% for(var i = downloads.length; i > (downloads.length - 10); i--){ %>
+                    <% if(downloads[i] != null) { %>
+                      <% if(downloads[i].release == 'Alpha'){ %>
+                        <tr class='alpha'>
+                      <% } else if(downloads[i].release == 'Full') { %>
+                        <tr class='full'>
+                      <% } else { %>
+                        <tr>
+                      <% } %> 
+                        <td class='version'>v<%= downloads[i].version %> </td>
+                        <td><%= downloads[i].info %></td>
+                        <td><%= downloads[i].minecraftVersion %></td>
+                        <td><input type='hidden' value='<%= downloads[i]._id %>' class='id'></td>
+                        <td><button type="button" class="close">&times;</button></td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                    <tr>
+                      <td>No releases right now!</td>
+                    </tr>
+                <% } %>
+              </table>
+            </fieldset>
+          </div>
+        <% } %>
+      </div>
+
+      <div class='row'>
+
+      <% if(admin.user == 'Sam6982') { %>
+        <div class='row'>
+          <div class='span6 offset3'>
+            <fieldset>
+              <legend>Administrators</legend>
+
+              <table class='table table-bordered table-bolded'>
+                <% if(accounts != null) { %>
+                  <% for(var i = 0; i < accounts.length; i++){ %>
+                    <% if(accounts[i] != null) { %>
+                      <tr>
+                        <td><%= accounts[i].name %> </td>
+                        <td><%= accounts[i].user %></td>
+                        <td><%= accounts[i].super %></td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } %>
+              </table>
+
+            </fieldset>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/img/logo.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+
+.table-bolded {
+    font-weight: bold;
+}
+
+.bolded {
+    font-size: 14pt;
+}
+
+.alpha {
+    background-color: #FFB8B8;
+}
+
+.full {
+    background-color: #B8FFB9;
+}
+
+.head {
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.standard {
+  font-size: 12pt;
+}

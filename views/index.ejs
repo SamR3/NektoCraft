@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>Nekto Craft</title>
+
+  </head>
+  <body>
+
+    <%- partial('navbar', {tab: 'home', admin: locals.admin}) %>
+
+    <div class='container'>
+      <div class='row'>
+        <div class='span10 offset1'>
+          <div class="page-header">
+            <h1>NektoCraft! <small>the home of Nekto's mods</small></h1>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class='row'>
+        <div class='span8 offset1'>
+          <div class='well well-large' align='center'>
+            <h3>My Mods</h3>
+            <p>I have a couple of mods going right now. Odyssey Mod is an in-progress mod that will be pretty awesome if I can ever finish it. Metal Mod is some metals, alloys, and other materials that will be used in the Odyssey Mod... when it's done. Controller Block is a remake of a classic Minecraft mod that sadly fell to the wayside. I hope that you enjoy these mods as much as I do. </p>
+
+            <a href='/odysseymod'><button class='btn'>Odyssey Mod</button></a>&nbsp<a href='/metalmod'><button class='btn'>Metal Mod</button></a>&nbsp<a href='/controller'><button class='btn'>Controller Block</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

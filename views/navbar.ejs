@@ -1,0 +1,73 @@
+<link rel='stylesheet' href='/css/bootstrap.css' />
+<link rel='stylesheet' href='/css/style.css' />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src='/js/bootstrap-dropdown.js'>
+  $('.dropdown-toggle').dropdown();
+</script>
+
+<script src='/js/login.js'></script>
+
+<% var navStandard = [{label: 'Home', link: '/'}, {label: 'About Me', link: '/about'}, {label: 'Downloads', link: '/download'}, {label: 'Guides', link: '/guides'}, {label: 'Contact Me', link: '/contact'}, {label: 'Report A Bug', link: '/bug'}] %>
+<% var navDrop = [{label: 'Metal Mod', link: '/metalmod'}, {label: 'Odyssey Mod', link: '/odyssey'}, {label: 'Controller Block Mod', link: '/controller'}] %>
+
+<% if(locals.admin.admin == true) { %>
+  <% navStandard.push({label: 'Admin', link: '/6982'}) %>
+<% } %>
+
+<div class='header'> 
+  <div class='navbar'>
+    <div class='navbar-inner'>
+      <a class='brand'>Nekto Craft</a>
+      <ul class='nav'>
+
+        <% for(var i = 0; i < 2; i++) { %>
+          <% if(locals.tab.toLowerCase() === navStandard[i].label.toLowerCase()) { %>
+            <li class='active'><a><%= navStandard[i].label %></a></li>
+          <% } else { %>
+            <li><a href=<%= navStandard[i].link %>><%= navStandard[i].label %></a></li>
+          <% } %>
+        <% } %>
+
+        <li class="dropdown" data-dropdown="dropdown">
+          <a href="#" class="dropdown-toggle">Mods <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% for(var i = 0; i < navDrop.length; i++) { %>
+              <% if(locals.tab.toLowerCase() === navDrop[i].label.toLowerCase()) { %>
+                <li class='active'><a><%= navDrop[i].label %></a></li>
+              <% } else { %>
+                <li><a href=<%= navDrop[i].link %>><%= navDrop[i].label %></a></li>
+              <% } %>
+            <% } %>
+          </ul>
+        </li>
+
+        <% for(var i = 2; i < navStandard.length; i++) { %>
+          <% if(locals.tab.toLowerCase() === navStandard[i].label.toLowerCase()) { %>
+            <li class='active'><a><%= navStandard[i].label %></a></li>
+          <% } else { %>
+            <li><a href=<%= navStandard[i].link %>><%= navStandard[i].label %></a></li>
+          <% } %>
+        <% } %>
+
+      </ul>
+
+      <% if(locals.admin.admin) { %>
+        <div class="pull-right navbar-logout">
+          <p class='nav navbar-text'>Welcome, <%= locals.admin.name %></p>
+          
+          <a class="btn logout-btn" href="/logout">Sign Out</a>
+        </div>
+      <% } else { %>
+        <form class="navbar-form pull-right navbar-login">
+            <div class="input-area">
+                <input id='username' class="span2 login-username" type="text" placeholder="user name" maxlength="50">
+                <input id='pass' class="span2 login-password" type="password" placeholder="password" maxlength="50">
+                <button id='submit' type="submit" class="btn btn-primary login-btn">Sign in</button>
+            </div>
+        </form>
+      <% } %>
+
+    </div>
+  </div>
+</div>

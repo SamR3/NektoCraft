@@ -1,0 +1,15 @@
+{
+  "name": "nekto-craft",
+  "version": "1.5.3",
+  "private": true,
+  "main": "app",
+  "scripts": {
+      "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "express-partials": "*",
+    "ejs": "*",
+    "mongoose": "*"
+  }
+}
